@@ -39,21 +39,21 @@ def sacar_datos_opendata(req):
     #conseguimos la fecha
     res['fecha'] = fields['data_dates'][2:12] + " " + fields['data_dates'][13:21]
     #conseguimos el NO2
-    res['NO2'] = fields['value_no2']
+    res['NO2'] = int(fields['value_no2'])
     #conseguimos el O3
-    res['O3'] = fields['value_o3']
+    res['O3'] = int(fields['value_o3'])
     #conseguimos el CO
-    res['CO'] = fields['value_co']
+    res['CO'] = int(fields['value_co'])
     
     #conseguimos el PM2.5
     key = fields['data_pollutants_pm25_aqi_epa'].find('values')
-    res['PM2.5'] = fields['data_pollutants_pm25_aqi_epa'][key+10]
+    res['PM2.5'] = int(fields['data_pollutants_pm25_aqi_epa'][key+10])
     #conseguimos el PM5
-    res['PM5'] = fields['value_pm5']
+    res['PM5'] = int(fields['value_pm5'])
     #conseguimos el PM10
     key_inicial = fields['data_pollutants'].find('PM10')
     key = fields['data_pollutants'][key_inicial:].find('values')
-    res['PM10'] = fields['data_pollutants'][key+10]
+    res['PM10'] = int(fields['data_pollutants'][key+10])
     return res
 
 def volver_datetime_fecha_opendata(fecha):
